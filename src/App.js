@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import GroceryInput from "./GroceryInput"
 import List from "./List"
 import { GroceryInputContext, GroceryContext } from "./context/context"
-
+import { v4 as uuidv4 } from 'uuid';
 import "./App.css"
 
 
@@ -24,7 +24,15 @@ function App() {
   const [listArray, setListArray] = useState(listObj)
 
   function addGrocery(items) {
-    console.log(items);
+    let newAddedItemArray = [
+      ...listArray,
+    {
+      id: uuidv4(),
+      items,
+      isDone: false,
+    },
+    ]
+    setListArray(newAddedItemArray)
   }
 
   function showListInput() {
