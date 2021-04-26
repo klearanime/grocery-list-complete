@@ -43,11 +43,21 @@ function App() {
     )
   }
 
+  function handleDoneByID(id) {
+    let newListArray = listArray.map((item) => {
+      if (item.id === id) {
+        item.isDone = !item.isDone
+      }
+      return item
+  })
+  setListArray(newListArray)
+  }
+
   function showItem() {
     return listArray.map((item) => {
       return (
         <GroceryContext.Provider 
-        key={item.id} value={{listItem: item}}>
+        key={item.id} value={{listItem: item, handleDoneByID}}>
           <List />
         </GroceryContext.Provider>
       )

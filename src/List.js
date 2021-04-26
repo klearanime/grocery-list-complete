@@ -5,12 +5,13 @@ import { GroceryContext } from "./context/context"
 
 function List() {
     const {
-        listItem: { id, items },
+        listItem: { id, items, isDone },
+        handleDoneByID,
     } = useContext(GroceryContext)
     return (
         <div>
-            {items}
-            <button>Done</button>
+            <span style={{ textDecoration: isDone ? "line-through" : "" }}>{items} </span>
+            <button onClick={() => handleDoneByID(id)}>Done</button>
             <button>Delete</button>
         </div>
     )
