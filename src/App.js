@@ -21,6 +21,9 @@ let listObj = [
 ]
 
 function App() {
+  const initialItems = window.localStorage.getItem("items")
+  ? JSON.parse(window.localStorage.getItem("items")) 
+  : []
   const [listArray, setListArray] = useState(listObj)
 
   function addGrocery(items) {
@@ -69,6 +72,10 @@ function App() {
       )
     })
   }
+
+  useEffect(() => {
+    window.localStorage.setItem("items", JSON.stringify(listArray));
+  }, [listArray])
 
   return (
     <div>
