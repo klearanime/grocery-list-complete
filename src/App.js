@@ -43,6 +43,12 @@ function App() {
     )
   }
 
+  function handleDeleteByID(id) {
+    let newListArray = listArray.filter((item) => item.id !== id)
+
+    setListArray(newListArray)
+  }
+
   function handleDoneByID(id) {
     let newListArray = listArray.map((item) => {
       if (item.id === id) {
@@ -57,7 +63,7 @@ function App() {
     return listArray.map((item) => {
       return (
         <GroceryContext.Provider 
-        key={item.id} value={{listItem: item, handleDoneByID}}>
+        key={item.id} value={{listItem: item, handleDoneByID, handleDeleteByID}}>
           <List />
         </GroceryContext.Provider>
       )
